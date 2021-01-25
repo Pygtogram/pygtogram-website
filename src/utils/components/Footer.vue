@@ -3,7 +3,7 @@
     <div class="content has-text-centered">
       <p><strong>Pygtogram</strong>, Pierre-Yves GENEST.</p>
       <p>
-        Code source du site web et de la concordance disponible sur
+        Code source disponible sur
         <a
           href="https://github.com/Pygtogram"
           target="_blank"

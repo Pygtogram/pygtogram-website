@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar is-primary"
+    class="navbar"
     role="navigation"
     aria-label="main navigation"
   >
@@ -10,7 +10,8 @@
         class="navbar-item"
         to="/"
       >
-        Pygtogram
+        <img src="~@/assets/icons/pygtogram.svg">
+        <span class="app-name">Pygtogram</span>
       </router-link>
 
       <!-- Bouton de menu (smartphone) -->
@@ -42,12 +43,12 @@
         >
           Concordance
         </router-link>
-        <router-link
+        <!--<router-link
           class="navbar-item"
           to="/gestion-de-microcards"
         >
           GdM
-        </router-link>
+        </router-link>-->
       </div>
 
       <div class="navbar-end">
@@ -87,5 +88,13 @@ export default {
   #version {
     display: none;
   }
+}
+.navbar {
+  box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1),
+    0 0 0 1px rgba(73, 20, 20, 0.02);
+}
+.app-name {
+  font-family: 'Rationale', sans-serif;
+  font-size: 1.25em;
 }
 </style>

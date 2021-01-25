@@ -26,9 +26,8 @@ export default {
 </script>
 
 <style>
-@media screen and (max-width: 1023px) {
-  #version {
-    display: none;
-  }
+@font-face {
+  font-family: 'Rationale';
+  src: url('~@/assets/fonts/Rationale-Regular.ttf');
 }
 </style>

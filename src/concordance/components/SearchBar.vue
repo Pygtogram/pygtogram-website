@@ -23,7 +23,7 @@
             </button>
           </div>
         </div>
-        <div class="column is-narrow">
+        <!--<div class="column is-narrow">
           <div class="control">
             <button
               class="button has-tooltip-left has-tooltip-top-desktop"
@@ -32,7 +32,7 @@
               <i class="fas fa-hammer" />
             </button>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>

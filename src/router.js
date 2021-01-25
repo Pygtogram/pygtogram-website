@@ -4,6 +4,7 @@ import Concordance from './concordance/Concordance';
 
 const routes = [
   {path: '/concordance', component: Concordance},
+  {path: '/', redirect: '/concordance'},
 ];
 
 // Routeur de l'application

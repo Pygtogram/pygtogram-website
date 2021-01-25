@@ -1,7 +1,7 @@
 <template>
   <ptgm-container-navigation>
     <template #content>
-      <div class="container container-navigation">
+      <div class="container">
         <h1
           class="title"
           style="padding-top: 48px;"
