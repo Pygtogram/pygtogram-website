@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 import {ConcordanceLoadingStatus} from '../../store/state';
-const BACKEND_API_URL = 'http://localhost:5000';
+const BACKEND_API_URL = 'https://ndanzrubpj.execute-api.eu-west-3.amazonaws.com/production';
 
 /**
  * Permet d'interroger le backend
@@ -21,18 +21,15 @@ export class BackendService {
   searchInConcordance(content) {
     this.store.commit('updateConcordanceLoadingStatus',
         ConcordanceLoadingStatus.LOADING);
+    this.store.commit('updateConcordanceResults', []);
 
     const formData = new FormData();
     formData.append('content', content);
 
-    axios.post(`${BACKEND_API_URL}/query`, formData)
+    axios.post(`${BACKEND_API_URL}/concordance`, {'query': content},
+        {'Content-Type': 'application/json'})
         .then((response) => {
-          // TODO remove
-          response = response.data.map((result) => {
-            return result + 1000000;
-          });
-
-          this.store.commit('updateConcordanceResults', response);
+          this.store.commit('updateConcordanceResults', response.data.body);
           this.store.commit('updateConcordanceLoadingStatus',
               ConcordanceLoadingStatus.COMPLETE);
         })

@@ -9,6 +9,7 @@
           Concordance
         </h1>
         <ptgm-concordance-search-bar />
+        <ptgm-concordance-loading />
         <ptgm-concordance-results />
       </div>
     </template>
@@ -33,12 +34,14 @@ import {BibleService} from './services/BibleService';
 import {BackendService} from './services/BackendService';
 import SearchBar from './components/SearchBar.vue';
 import ConcordanceResults from './components/ConcordanceResults.vue';
+import LoadingVue from './components/Loading.vue';
 
 export default {
   components: {
     'ptgm-container-navigation': ContainerNavigation,
     'ptgm-concordance-search-bar': SearchBar,
     'ptgm-concordance-results': ConcordanceResults,
+    'ptgm-concordance-loading': LoadingVue,
   },
   provide() {
     return {

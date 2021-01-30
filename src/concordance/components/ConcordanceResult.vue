@@ -3,7 +3,11 @@
     <td style="white-space: nowrap;">
       {{ bookName }} {{ chapter }}:{{ verse }}
     </td>
-    <td>{{ verseText }}</td>
+    <td>
+      <p class="verse-overflow">
+        {{ verseText }}
+      </p>
+    </td>
   </tr>
 </template>
 
@@ -39,5 +43,10 @@ export default {
 </script>
 
 <style>
-
+.verse-overflow {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 </style>

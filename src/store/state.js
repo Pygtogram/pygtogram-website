@@ -8,5 +8,5 @@ export const ConcordanceLoadingStatus = {
 // Etat initial du store
 export const INITIAL_STATE = {
   concordanceResults: [],
-  concordanceLoadingStatus: ConcordanceLoadingStatus.COMPLETE,
+  concordanceLoadingStatus: ConcordanceLoadingStatus.LOADING,
 };

@@ -1,5 +1,8 @@
 <template>
-  <div class="columns is-tablet">
+  <div
+    style="margin-bottom: 0;"
+    class="columns is-tablet"
+  >
     <div class="column">
       <div class="control">
         <input
