@@ -2,7 +2,7 @@
   <div style="height: 12px;">
     <progress
       v-show="loading"
-      class="progress is-small is-primary"
+      class="progress is-small is-info"
     />
   </div>
 </template>

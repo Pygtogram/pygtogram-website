@@ -10,6 +10,7 @@
           class="input"
           type="text"
           placeholder="mots ou phrase"
+          @change="searchInConcordance"
         >
       </div>
     </div>
@@ -18,7 +19,7 @@
         <div class="column">
           <div class="control">
             <button
-              class="button is-primary"
+              class="button is-info"
               :disabled="isSearchContentEmpty"
               @click="searchInConcordance"
             >

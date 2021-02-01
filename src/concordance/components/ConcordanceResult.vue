@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr style="height: 4.1rem;">
     <td style="white-space: nowrap;">
       {{ bookName }} {{ chapter }}:{{ verse }}
     </td>

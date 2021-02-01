@@ -26,7 +26,7 @@ export class BackendService {
     const formData = new FormData();
     formData.append('content', content);
 
-    axios.post(`${BACKEND_API_URL}/concordance`, {'query': content},
+    axios.post(`${BACKEND_API_URL}/concordance-simple`, {'query': content},
         {'Content-Type': 'application/json'})
         .then((response) => {
           this.store.commit('updateConcordanceResults', response.data.body);
