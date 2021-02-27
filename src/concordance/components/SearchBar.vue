@@ -20,7 +20,7 @@
           <div class="control">
             <button
               class="button is-info"
-              :disabled="isSearchContentEmpty"
+              :disabled="isSearchContentEmpty || isLoading"
               @click="searchInConcordance"
             >
               Rechercher
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import {ConcordanceLoadingStatus} from '../../store/state';
+
 export default {
   inject: ['backendService'],
 
@@ -56,11 +58,15 @@ export default {
     isSearchContentEmpty() {
       return this.searchContent.length == 0;
     },
+    isLoading() {
+      return this.$store.state.concordanceLoadingStatus ==
+        ConcordanceLoadingStatus.LOADING;
+    },
   },
 
   methods: {
     searchInConcordance() {
-      if (this.searchContent != '') {
+      if (!this.isSearchContentEmpty && !this.isLoading) {
         this.backendService.searchInConcordance(this.searchContent);
       }
     },

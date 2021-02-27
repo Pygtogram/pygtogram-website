@@ -21,7 +21,7 @@ export class BackendService {
   searchInConcordance(content) {
     this.store.commit('updateConcordanceLoadingStatus',
         ConcordanceLoadingStatus.LOADING);
-    this.store.commit('updateConcordanceResults', []);
+    this.store.commit('updateConcordanceResults', {'top': [], 'words': []});
 
     const formData = new FormData();
     formData.append('content', content);
@@ -29,7 +29,14 @@ export class BackendService {
     axios.post(`${BACKEND_API_URL}/concordance-simple`, {'query': content},
         {'Content-Type': 'application/json'})
         .then((response) => {
-          this.store.commit('updateConcordanceResults', response.data.body);
+          const results = {
+            'top': response.data.body.top,
+            'words': response.data.body.words.map((word) => {
+              return BackendService.getRegex(word);
+            }),
+          };
+
+          this.store.commit('updateConcordanceResults', results);
           this.store.commit('updateConcordanceLoadingStatus',
               ConcordanceLoadingStatus.COMPLETE);
         })
@@ -37,5 +44,21 @@ export class BackendService {
           this.store.commit('updateConcordanceLoadingStatus',
               ConcordanceLoadingStatus.ERROR);
         });
+  }
+
+  /**
+   * Créé une regex pour faire un match sur le mot
+   * @param {String} word mot (sans accents)
+   * @return {Regexp} regex
+   */
+  static getRegex(word) {
+    /* word = word.replaceAll('a', '[aâà]');
+    word = word.replaceAll('e', '[eéèêë]');
+    word = word.replaceAll('i', '[iîï]');
+    word = word.replaceAll('o', '[oô]');
+    word = word.replaceAll('u', '[uûù]');
+    word = word.replaceAll('c', '[cç]'); */
+
+    return new RegExp(word, 'ig'); // Ignore la casse
   }
 }

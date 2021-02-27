@@ -4,9 +4,13 @@
       {{ bookName }} {{ chapter }}:{{ verse }}
     </td>
     <td>
-      <p class="verse-overflow">
-        {{ verseText }}
-      </p>
+      <!--<p
+        class="verse-overflow"
+        v-html="verseText"
+      />-->
+      <p
+        v-html="verseText"
+      />
     </td>
   </tr>
 </template>
@@ -32,8 +36,16 @@ export default {
 
   computed: {
     verseText() {
-      return this.bibleService.getVerseText(this.book, this.chapter,
-          this.verse);
+      let verse = this.bibleService.getVerseText(this.book,
+          this.chapter, this.verse);
+
+      if (verse) {
+        this.$store.state.concordanceWords.forEach((word) => {
+          verse = verse.replaceAll(word, '<b>$&</b>');
+        });
+      }
+
+      return verse;
     },
     bookName() {
       return this.bibleService.getBookName(this.book);
